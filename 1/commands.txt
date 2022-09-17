@@ -1,0 +1,7 @@
+1.1 Q1 python pacman.py -l bigMaze -p SearchAgent -z .8
+    Q2 python pacman.py -l bigMaze -p SearchAgent -a fn=bfs -z .8
+
+2.1 Q4 python pacman.py -l bigMaze -z .8 -p SearchAgent -a fn=astar,heuristic=manhattanHeuristic
+2.2 Q4 python pacman.py -l bigMaze -z .8 -p SearchAgent -a fn=astar
+2.3 Q5 python pacman.py -l mediumCorners -p AStarCornersAgent -z .8
+2.4 Q7 python pacman.py -l trickySearch -p AStarFoodSearchAgent
