@@ -5,3 +5,5 @@
 2.2 Q4 python pacman.py -l bigMaze -z .8 -p SearchAgent -a fn=astar
 2.3 Q5 python pacman.py -l mediumCorners -p AStarCornersAgent -z .8
 2.4 Q7 python pacman.py -l trickySearch -p AStarFoodSearchAgent
+
+45345235423
