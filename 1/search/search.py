@@ -171,9 +171,35 @@ def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     return path
     # util.raiseNotDefined()
 
+def greedySearch(problem: SearchProblem, heuristic=nullHeuristic):
+    """Search the node that has the lowest combined cost and heuristic first."""
+    "*** YOUR CODE HERE ***"
+    
+    from util import PriorityQueue
+    store = PriorityQueue()
+    store.push(problem.getStartState(), 0)
+    path = []
+    visited_nodes = []
+    path_to_curr_state = PriorityQueue()
+    curr_state = store.pop()
+    while not problem.isGoalState(curr_state):
+        if curr_state not in visited_nodes:
+            visited_nodes.append(curr_state)
+            successors = problem.getSuccessors(curr_state)
+            for child, action, cost in successors:
+                if child not in visited_nodes:
+                    curr_cost = heuristic(child, problem)
+                    store.push(child, curr_cost)
+                    path_to_curr_state.push(path + [action], curr_cost)
+        curr_state = store.pop()
+        path = path_to_curr_state.pop()
+    
+    return path
+    # util.raiseNotDefined()
 
 # Abbreviations
 bfs = breadthFirstSearch
 dfs = depthFirstSearch
 astar = aStarSearch
 ucs = uniformCostSearch
+greedy = greedySearch
