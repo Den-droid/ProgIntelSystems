@@ -1,2 +1,5 @@
 # Delete python cache
-__pycache__
+__pycache__/
+
+# Hide this file
+/.gitgnore
