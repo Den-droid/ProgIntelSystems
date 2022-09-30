@@ -392,12 +392,12 @@ def cornersHeuristic(state: Any, problem: CornersProblem):
             unvisited_corners.append(corner)
     
     heuristic = [0]
-    # from util import manhattanDistance
-    # for corner in unvisited_corners:
-    #     heuristic.append(manhattanDistance(coords, corner))
-    
+    from util import manhattanDistance
     for corner in unvisited_corners:
-        heuristic.append(mazeDistance(coords, corner, problem.startingGameState))
+        heuristic.append(manhattanDistance(coords, corner))
+    
+    # for corner in unvisited_corners:
+    #     heuristic.append(mazeDistance(coords, corner, problem.startingGameState))
     
     return max(heuristic)
     #return 0  Default to trivial solution

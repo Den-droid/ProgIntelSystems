@@ -1,0 +1,3 @@
+minimax - python pacman.py -p MinimaxAgent -l minimaxClassic -a depth=4
+alpha-beta - python pacman.py -p AlphaBetaAgent -a depth=3 -l smallClassic
+expectimax - python pacman.py -p ExpectimaxAgent -l minimaxClassic -a depth=3
