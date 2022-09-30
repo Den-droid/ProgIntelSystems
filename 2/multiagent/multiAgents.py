@@ -67,6 +67,7 @@ class ReflexAgent(Agent):
         Print out these variables to see what you're getting, then combine them
         to create a masterful evaluation function.
         """
+        print(action)
         # Useful information you can extract from a GameState (pacman.py)
         successorGameState = currentGameState.generatePacmanSuccessor(action)
         newPos = successorGameState.getPacmanPosition()
@@ -78,52 +79,52 @@ class ReflexAgent(Agent):
         if successorGameState.isWin():
             return 1000000
         
-        foodList = newFood.asList()
+        food_list = newFood.asList()
         from util import manhattanDistance
-        foodDistance = [0]
-        for pos in foodList:
-            foodDistance.append( manhattanDistance(newPos,pos) )
+        food_distance = [0]
+        for pos in food_list:
+            food_distance.append( manhattanDistance(newPos,pos) )
             
-        ghostPos = []
+        ghost_pos = []
         for ghost in newGhostStates:
-            ghostPos.append(ghost.getPosition())
+            ghost_pos.append(ghost.getPosition())
 
-        ghostDistance = []
-        for pos in ghostPos:
-            ghostDistance.append(manhattanDistance(newPos,pos))
+        ghost_distance = []
+        for pos in ghost_pos:
+            ghost_distance.append(manhattanDistance(newPos,pos))
 
-        ghostPosCurrent = []
+        current_ghost_pos = []
         for ghost in currentGameState.getGhostStates():
-            ghostPosCurrent.append(ghost.getPosition())
+            current_ghost_pos.append(ghost.getPosition())
 
-        ghostDistanceCurrent = []
-        for pos in ghostPosCurrent:
-            ghostDistanceCurrent.append(manhattanDistance(newPos,pos))
+        current_ghost_distance= []
+        for pos in current_ghost_pos:
+            current_ghost_distance.append(manhattanDistance(newPos,pos))
             
         score = 0
-        numberOfFoodLeft = len(foodList)
-        numberOfFoodLeftCurrent = len(currentGameState.getFood().asList())
-        numberofPowerPellets = len(successorGameState.getCapsules())
-        sumScaredTimes = sum(newScaredTimes)
+        number_food_left = len(food_list)
+        current_number_food_left = len(currentGameState.getFood().asList())
+        number_power_pellets = len(successorGameState.getCapsules())
+        sum_scared_times = sum(newScaredTimes)
         
         score += successorGameState.getScore() - currentGameState.getScore()
         if action == Directions.STOP:
             score -= 10
             
         if newPos in currentGameState.getCapsules():
-            score += 150 * numberofPowerPellets
-        if numberOfFoodLeft < numberOfFoodLeftCurrent:
+            score += 150 * number_power_pellets
+        if number_food_left < current_number_food_left:
             score += 200
 
-        score -= 10 * numberOfFoodLeft
+        score -= 10 * number_food_left
 
-        if sumScaredTimes > 0 :
-            if min(ghostDistanceCurrent) < min(ghostDistance):
+        if sum_scared_times > 0 :
+            if min(current_ghost_distance) < min(ghost_distance):
                 score += 200
             else:
                 score -=100
         else:
-            if min(ghostDistanceCurrent) < min(ghostDistance):
+            if min(current_ghost_distance) < min(ghost_distance):
                 score -= 100
             else:
                 score += 200
@@ -173,7 +174,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
 
         Here are some method calls that might be useful when implementing minimax.
 
-        gameState.getlegal_actions(agent_index):
+        gameState.getLegalActions(agent_index):
         Returns a list of legal actions for an agent
         agent_index=0 means Pacman, ghosts are >= 1
 
