@@ -48,13 +48,6 @@ b_queen_table = [-20, -10, -10, -5, -5, -10, -10, -20,
                  -20, -10, -10, -5, -5, -10, -10, -20]
 w_queen_table = b_queen_table[::-1]
 
-# loading opening book reader
-try:
-    reader = chess.polyglot.open_reader('book\\book.bin')
-except FileNotFoundError:
-    print('No opening book found. make sure you have it in the right folder (path should be ..\\book.bin)')
-
-
 def mateInXMoves(score):
     half_moves_to_mate = (-(abs(score) - 99999) // (999.99))
     if not isnan(half_moves_to_mate):
