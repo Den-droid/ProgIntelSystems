@@ -250,11 +250,11 @@ def negaScout(board, depth, alpha, beta, color, max_depth):
 
 # computer move function
 def move(board, depth, color):
-    # bestMove, value = negaMaxRoot(
-    #             board, depth, -inf, inf, color, depth)
+    bestMove, value = negaMaxRoot(
+                board, depth, -inf, inf, color, depth)
     # bestMove, value = negaScoutRoot(
     #             board, depth, -inf, inf, color, depth)
-    bestMove, value = pvsRoot(board, depth, -inf, inf, color, depth)
+    # bestMove, value = pvsRoot(board, depth, -inf, inf, color, depth)
     return bestMove, value
 
 
