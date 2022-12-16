@@ -1,0 +1,4 @@
+python gridworld.py -a value -i 5
+python gridworld.py -g DiscountGrid -a value --discount [YOUR_DISCOUNT] --noise [YOUR_NOISE] --livingReward [YOUR_LIVING_REWARD]
+python gridworld.py -a q -k 5 -m
+python gridworld.py -a q -k 100 --noise 0.0 -e 0.1
